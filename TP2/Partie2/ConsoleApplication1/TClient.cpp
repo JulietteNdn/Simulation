@@ -1,12 +1,12 @@
 #include "stdafx.h"
 #include "TClient.h"
-
+#include <string>
 
 TClient::TClient()
 {
 }
 
-TClient::TClient(int dateEntree):id(nbClient)
+TClient::TClient(int dateEntree, float p, float q): id(nbClient), etape(0), gamme(p,q)
 {
 	for (int i = 0; i < 799; i++) {
 		dateEntreeFileA[i] = -1;
@@ -22,7 +22,28 @@ TClient::TClient(int dateEntree):id(nbClient)
 	dateSortieServB = -1;
 	dateSortieServC = -1;
 
+
 	nbClient++;
+}
+
+char TClient::prochaineMachine()
+{
+	return gamme.getListeMachine()[etape + 1];
+}
+
+void TClient::etapeInc()
+{
+	etape++;
+}
+
+int TClient::getEtape()
+{
+	return etape;
+}
+
+TGammeOp TClient::getGamme()
+{
+	return gamme;
 }
 
 
@@ -116,6 +137,9 @@ void TClient::setDateSortieServC(int date)
 	dateSortieServC = date;
 }
 
-
+std::string TClient::toString() {
+	
+	return std::to_string(0); //TODO
+}
 
 int TClient::nbClient = 0;

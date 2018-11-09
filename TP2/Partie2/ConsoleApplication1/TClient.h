@@ -1,12 +1,17 @@
 #pragma once
-
+#include "TGammeOp.h"
+#include <iostream>
 
 class TClient
 {
 
 private:
 	static int nbClient;
+
 	int id;
+
+	int etape;
+
 	int dateEntreeFileA[800];
 	int dateEntreeServA[800];
 
@@ -18,11 +23,19 @@ private:
 	int dateEntreeServC[800];
 	int dateSortieServC; // sortie définitive
 
+	TGammeOp gamme;
+
 
 public:
 	TClient();
-	TClient(int dateEntree);
+	TClient(int, float, float);
 
+	char prochaineMachine(); 
+
+	void etapeInc();
+	int getEtape();
+
+	TGammeOp getGamme();
 
 	int * getDateEntreeFileA(); 
 	int * getDateEntreeServA();
@@ -44,6 +57,8 @@ public:
 
 	void setDateEntreeServC(int);
 	void setDateSortieServC(int);
+
+	std::string toString();
 
 	// setDateEntreeFile2(int) = setDateSortieSev1(int)
 

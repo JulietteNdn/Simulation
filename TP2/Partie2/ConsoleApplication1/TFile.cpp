@@ -4,6 +4,7 @@
 
 TFile::TFile():pf(0), pd(0)
 {
+	viderFile();
 }
 
 

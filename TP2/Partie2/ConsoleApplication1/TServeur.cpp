@@ -22,6 +22,10 @@ TClient TServeur::libererClient() {
 	return clientCour;
 }
 
+TClient TServeur::voirClient() {
+	return clientCour;
+}
+
 
 etat TServeur::getEtat() const noexcept
 {

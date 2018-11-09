@@ -12,6 +12,8 @@ public:
 	TClient libererClient();
 	void bloquerClient();
 
+	TClient voirClient();
+
 	etat getEtat() const noexcept ;
 
 private:
