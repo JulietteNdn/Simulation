@@ -4,6 +4,7 @@
 #include "MyForm.h"
 #include "code.h"
 #include "TGammeOp.h"
+#include <ctime>
 
 
 using namespace System;
@@ -11,10 +12,11 @@ using namespace System::Windows::Forms;
 
 int main(array<System::String ^> ^args)
 {
+	srand(time(NULL));
 	TGammeOp gamme_operatoire(0.2, 0.5);
 
 
-/*/	
+/*
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 

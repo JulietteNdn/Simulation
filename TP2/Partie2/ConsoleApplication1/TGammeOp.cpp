@@ -34,7 +34,6 @@ char * TGammeOp::getListeMachine()
 
 int TGammeOp::bernouilli(float d)
 {
-	srand(time(NULL));
 	int retour = 0;
 	int test = rand()%1000;
 	float nb = test / 1000.;
