@@ -17,7 +17,6 @@ void TSortie::ajouterClient(TClient unClient)
 void TSortie::calculerMoyenne()
 {
 	int sommeMoy = 0;
-	float moy;
 
 	for (int i = 0; i < cpt; i++) {
 		sommeMoy += tabClient[i].getDateSortieSys() - tabClient[i].getDateEntreeSys();
