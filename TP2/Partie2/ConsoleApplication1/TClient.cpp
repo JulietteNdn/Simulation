@@ -137,9 +137,41 @@ void TClient::setDateSortieServC(int date)
 	dateSortieServC = date;
 }
 
-std::string TClient::toString() {
-	
-	return std::to_string(0); //TODO
+string TClient::getChemin()
+{
+	return chemin;
 }
+
+void TClient::updateChemin()
+{
+	int i = 0;
+	chemin = "EntréesFA: ";
+	while (dateEntreeFileA[i] != -1){
+		chemin += to_string(dateEntreeFileA[i]) + " ";
+		i++;
+	}
+
+	i = 0;
+	chemin += "EntreesSB: ";
+	while (dateEntreeServB[i] != -1) {
+		chemin += to_string(dateEntreeServB[i]) + " ";
+		i++;
+	}
+
+	i = 0;
+	chemin += "EntreesSC: ";
+	while (dateEntreeServC[i] != -1) {
+		chemin += to_string(dateEntreeServC[i]) + " ";
+		i++;
+	}
+
+	if (dateSortieServB != -1) {
+		chemin = "SORTIE B " + to_string(dateSortieServB) + "\n";
+	}
+	else {
+		chemin = "SORTIE C " + to_string(dateSortieServC) + "\n";
+	}
+}
+
 
 int TClient::nbClient = 0;

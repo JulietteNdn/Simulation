@@ -1,6 +1,9 @@
 #pragma once
 #include "TGammeOp.h"
 #include <iostream>
+#include <string>
+
+using namespace std;
 
 class TClient
 {
@@ -22,6 +25,8 @@ private:
 
 	int dateEntreeServC[800];
 	int dateSortieServC; // sortie définitive
+
+	string chemin;
 
 	TGammeOp gamme;
 
@@ -58,7 +63,9 @@ public:
 	void setDateEntreeServC(int);
 	void setDateSortieServC(int);
 
-	std::string toString();
+	string getChemin();
+	void updateChemin();
+
 
 	// setDateEntreeFile2(int) = setDateSortieSev1(int)
 

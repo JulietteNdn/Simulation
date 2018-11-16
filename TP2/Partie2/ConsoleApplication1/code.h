@@ -7,10 +7,10 @@
 #include "TSortie.h"
 #include "TEntree.h"
 
-TSortie simuler(int, int, int, int, int, float, float);
+TSortie simuler(int, int, int, int, int, double, double);
 
 void entreeSB(TServeur, TClient, TFile, int, int, int);
 void entreeSC(TServeur, TClient, TFile, int, int, int);
 
 
-void sortieBouC(TServeur &serveur, TClient &monsieurRecup, TFile &fileA, int tps);
+void sortieBouC(TSortie sortie, TServeur &serveur, TClient &monsieurRecup, TFile &fileA, int tps);

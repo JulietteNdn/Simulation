@@ -4,7 +4,7 @@
 using namespace System;
 
 
-TSortie simuler(int durSim, int durInter, int Sa, int Sb, int Sc, float p, float q) {
+TSortie simuler(int durSim, int durInter, int Sa, int Sb, int Sc, double p, double q) {
 	
 	int idCli = 0;
 
@@ -40,14 +40,14 @@ TSortie simuler(int durSim, int durInter, int Sa, int Sb, int Sc, float p, float
 			}
 		}
 
-		if (durTraitCourB <= 0)  // sortie d'un client de B ? entree dans A ou sortie définitive ?
-			sortieBouC(serveurB, monsieurRecup, fileA, tps);
+		if (durTraitCourB <= 0)  // sortie d'un client de B : entree dans A ou sortie définitive ?
+			sortieBouC(sortie, serveurB, monsieurRecup, fileA, tps);
 
-		if (durTraitCourC <= 0)  // sortie d'un client de C ? entree dans A ou sortie définitive ?
-			sortieBouC(serveurC, monsieurRecup, fileA, tps);
+		if (durTraitCourC <= 0)  // sortie d'un client de C : entree dans A ou sortie définitive ?
+			sortieBouC(sortie, serveurC, monsieurRecup, fileA, tps);
 
 		
-		if (durTraitCourA <= 0) { // sortie d'un client de A ? entree dans B ou C ?
+		if (durTraitCourA <= 0) { // sortie d'un client de A : entree dans B ou C ?
 			if (serveurA.getEtat() != LIBRE) {
 				TClient clientCour = serveurA.voirClient();
 				char pro = clientCour.prochaineMachine();
@@ -130,7 +130,7 @@ void entreeSC(TServeur serveur, TClient client, TFile file, int durTraitServeur,
 	}
 }
 
-void sortieBouC(TServeur &serveur, TClient &monsieurRecup, TFile &fileA, int tps) {
+void sortieBouC(TSortie sortie, TServeur &serveur, TClient &monsieurRecup, TFile &fileA, int tps) {
 
 	if (serveur.getEtat() != LIBRE) {
 		TClient clientCour = serveur.voirClient();
@@ -150,6 +150,8 @@ void sortieBouC(TServeur &serveur, TClient &monsieurRecup, TFile &fileA, int tps
 			monsieurRecup = serveur.libererClient();
 			monsieurRecup.etapeInc();
 			monsieurRecup.setDateSortieServB(tps);
+			monsieurRecup.updateChemin();
+			sortie.ajouterClient(monsieurRecup);
 		}
 	}
 }

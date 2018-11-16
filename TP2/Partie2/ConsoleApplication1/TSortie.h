@@ -9,12 +9,12 @@ public:
 	void ajouterClient(TClient);
 	TClient * getTabClient();
 	int getCpt();
-	void calculerMoyenne();
-	float * getMoyennes();
+	//void calculerMoyenne();
+	//float * getMoyennes();
 
 private:
 	int cpt;
-	float moyennes[NB_CLI_MAX];
+	//float moyennes[NB_CLI_MAX];
 	TClient tabClient[NB_CLI_MAX];
 
 

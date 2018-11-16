@@ -11,11 +11,11 @@ void TSortie::ajouterClient(TClient unClient)
 {
 	tabClient[cpt] = unClient;
 	cpt++;
-	calculerMoyenne();
 }
 
+/*
 void TSortie::calculerMoyenne()
-{/*
+{
 	int sommeMoy = 0;
 	float moy;
 
@@ -24,8 +24,9 @@ void TSortie::calculerMoyenne()
 
 	}
 	moyennes[cpt-1] = sommeMoy / (float)cpt;
-*/
+
 }
+*/
 
 TClient * TSortie::getTabClient()
 {
@@ -37,6 +38,8 @@ int TSortie::getCpt()
 	return cpt;
 }
 
+/*
 float * TSortie::getMoyennes() {
 	return moyennes;
 }
+*/
