@@ -8,7 +8,7 @@ TClient::TClient()
 
 TClient::TClient(int dateEntree, float p, float q): id(nbClient), etape(0), gamme(p,q)
 {
-	for (int i = 0; i < 799; i++) {
+	for (int i = 0; i < TAILLEMAXDATE; i++) {
 		dateEntreeFileA[i] = -1;
 		dateEntreeServA[i] = -1;
 		dateSortieServA[i] = -1;

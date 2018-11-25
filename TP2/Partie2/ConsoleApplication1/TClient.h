@@ -2,7 +2,7 @@
 #include "TGammeOp.h"
 #include <iostream>
 #include <string>
-
+#define TAILLEMAXDATE 10
 using namespace std;
 
 class TClient
@@ -15,15 +15,15 @@ private:
 
 	int etape;
 
-	int dateEntreeFileA[800];
-	int dateEntreeServA[800];
+	int dateEntreeFileA[TAILLEMAXDATE];
+	int dateEntreeServA[TAILLEMAXDATE];
 
-	int dateSortieServA[800]; // = dateEntreeFileB ou dateEntreeFileC
+	int dateSortieServA[TAILLEMAXDATE]; // = dateEntreeFileB ou dateEntreeFileC
 
-	int dateEntreeServB[800];
+	int dateEntreeServB[TAILLEMAXDATE];
 	int dateSortieServB; // sortie définitive
 
-	int dateEntreeServC[800];
+	int dateEntreeServC[TAILLEMAXDATE];
 	int dateSortieServC; // sortie définitive
 
 	string chemin;

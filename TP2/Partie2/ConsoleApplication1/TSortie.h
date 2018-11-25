@@ -1,6 +1,6 @@
 #pragma once
 #include "TClient.h"
-#define NB_CLI_MAX 10000
+#define NB_CLI_MAX 100
 
 class TSortie
 {
