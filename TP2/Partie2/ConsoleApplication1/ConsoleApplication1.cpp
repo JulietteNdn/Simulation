@@ -24,20 +24,18 @@ int main(cli::array<System::String ^> ^args)
 	
     return 0;
 
-}*/
+}
+*/
 
 int main(void) {
-	srand(NULL);
+	srand(time(NULL));
 	
 	TSortie sortie;
 	
-	sortie = simuler(500, 100, 10, 8, 6, 0.6, 0.4);
+	sortie = simuler(1000, 100, 10, 8, 6, 0.6, 0.4);
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 10; i++)
 		std::cout << sortie.getTabClient()[i].getChemin();
 		
-
-	TGammeOp gamme_operatoire(0.2, 0.5);
-	
 	return 0;
 }

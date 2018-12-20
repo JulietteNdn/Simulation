@@ -9,8 +9,8 @@
 
 TSortie simuler(int, int, int, int, int, double, double);
 
-void entreeSB(TServeur, TClient, TFile, int, int, int);
-void entreeSC(TServeur, TClient, TFile, int, int, int);
+void entreeSB(TServeur&, TClient&, TFile&, int&, int&, int);
+void entreeSC(TServeur&, TClient&, TFile&, int&, int&, int);
 
 
-void sortieBouC(TSortie sortie, TServeur &serveur, TClient &monsieurRecup, TFile &fileA, int tps);
+void sortieBouC(TSortie &sortie, TServeur &serveur, TClient &monsieurRecup, TFile &fileA, int tps, char);

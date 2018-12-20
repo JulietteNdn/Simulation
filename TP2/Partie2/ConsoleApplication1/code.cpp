@@ -41,10 +41,10 @@ TSortie simuler(int durSim, int durInter, int Sa, int Sb, int Sc, double p, doub
 		}
 
 		if (durTraitCourB <= 0)  // sortie d'un client de B : entree dans A ou sortie définitive ?
-			sortieBouC(sortie, serveurB, monsieurRecup, fileA, tps);
+			sortieBouC(sortie, serveurB, monsieurRecup, fileA, tps, 'B');
 
 		if (durTraitCourC <= 0)  // sortie d'un client de C : entree dans A ou sortie définitive ?
-			sortieBouC(sortie, serveurC, monsieurRecup, fileA, tps);
+			sortieBouC(sortie, serveurC, monsieurRecup, fileA, tps, 'C');
 
 		
 		if (durTraitCourA <= 0) { // sortie d'un client de A : entree dans B ou C ?
@@ -55,7 +55,6 @@ TSortie simuler(int durSim, int durInter, int Sa, int Sb, int Sc, double p, doub
 					if (!fileB.estPleine()) {
 						monsieurRecup = serveurA.libererClient();
 						monsieurRecup.setDateSortieServA(tps);
-						monsieurRecup.setDateEntreeServB(tps);
 						monsieurRecup.etapeInc();
 						fileB.enfiler(monsieurRecup);
 						durTraitCourB = Sb;
@@ -68,7 +67,6 @@ TSortie simuler(int durSim, int durInter, int Sa, int Sb, int Sc, double p, doub
 					if (!fileC.estPleine()) {
 						monsieurRecup = serveurA.libererClient();
 						monsieurRecup.setDateSortieServA(tps);
-						monsieurRecup.setDateEntreeServC(tps);
 						monsieurRecup.etapeInc();
 						fileC.enfiler(monsieurRecup);
 						durTraitCourC = Sc;
@@ -106,7 +104,7 @@ TSortie simuler(int durSim, int durInter, int Sa, int Sb, int Sc, double p, doub
 	return sortie;
 }
 
-void entreeSB(TServeur serveur, TClient client, TFile file, int durTraitServeur, int durTraitCourant, int tps) {
+void entreeSB(TServeur &serveur, TClient &client, TFile &file, int &durTraitServeur, int &durTraitCourant, int tps) {
 
 	if (serveur.getEtat() == LIBRE) { // c'est le cas pour le premier client, à peine ds fileB, quil va dans ServeurB
 		if (!file.estVide()) {
@@ -118,7 +116,7 @@ void entreeSB(TServeur serveur, TClient client, TFile file, int durTraitServeur,
 	}
 }
 
-void entreeSC(TServeur serveur, TClient client, TFile file, int durTraitServeur, int durTraitCourant, int tps) {
+void entreeSC(TServeur &serveur, TClient &client, TFile &file, int &durTraitServeur, int &durTraitCourant, int tps) {
 
 	if (serveur.getEtat() == LIBRE) { // c'est le cas pour le premier client, à peine ds fileC, quil va dans ServeurC
 		if (!file.estVide()) {
@@ -130,7 +128,7 @@ void entreeSC(TServeur serveur, TClient client, TFile file, int durTraitServeur,
 	}
 }
 
-void sortieBouC(TSortie sortie, TServeur &serveur, TClient &monsieurRecup, TFile &fileA, int tps) {
+void sortieBouC(TSortie &sortie, TServeur &serveur, TClient &monsieurRecup, TFile &fileA, int tps, char typeServ) {
 
 	if (serveur.getEtat() != LIBRE) {
 		TClient clientCour = serveur.voirClient();
@@ -149,7 +147,11 @@ void sortieBouC(TSortie sortie, TServeur &serveur, TClient &monsieurRecup, TFile
 		else { // sortie définitive
 			monsieurRecup = serveur.libererClient();
 			monsieurRecup.etapeInc();
-			monsieurRecup.setDateSortieServB(tps);
+			if(typeServ == 'B')
+				monsieurRecup.setDateSortieServB(tps);
+			else
+				monsieurRecup.setDateSortieServC(tps);
+
 			monsieurRecup.updateChemin();
 			sortie.ajouterClient(monsieurRecup);
 		}

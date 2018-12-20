@@ -145,31 +145,34 @@ string TClient::getChemin()
 void TClient::updateChemin()
 {
 	int i = 0;
-	chemin = "EntréesFA: ";
+	chemin = "EntreesFA:\t";
 	while (dateEntreeFileA[i] != -1){
 		chemin += to_string(dateEntreeFileA[i]) + " ";
 		i++;
 	}
-
+	
+	chemin += " || ";
 	i = 0;
-	chemin += "EntreesSB: ";
+	chemin += "EntreesSB:\t";
 	while (dateEntreeServB[i] != -1) {
 		chemin += to_string(dateEntreeServB[i]) + " ";
 		i++;
 	}
+	chemin += " || ";
 
 	i = 0;
-	chemin += "EntreesSC: ";
+	chemin += "EntreesSC:\t";
 	while (dateEntreeServC[i] != -1) {
 		chemin += to_string(dateEntreeServC[i]) + " ";
 		i++;
 	}
+	chemin += " || ";
 
 	if (dateSortieServB != -1) {
-		chemin = "SORTIE B " + to_string(dateSortieServB) + "\n";
+		chemin += "SORTIE B " + to_string(dateSortieServB) + "\n\n";
 	}
 	else {
-		chemin = "SORTIE C " + to_string(dateSortieServC) + "\n";
+		chemin += "SORTIE C " + to_string(dateSortieServC) + "\n\n";
 	}
 }
 
